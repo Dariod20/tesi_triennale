@@ -1,0 +1,10 @@
+bison -dvg -o parser.c parser.y
+cc -g -c parser.c
+dot -Tpdf -o parser.pdf parser.dot
+flex -o lexer.c lexer.lex
+cc -g -c lexer.c 
+cc -g -c tree.c
+cc -g -c gen.c
+cc -g -o T_code lexer.o parser.o tree.o gen.o
+cc -g -c interpreter.c
+cc -g -o tofu interpreter.o
